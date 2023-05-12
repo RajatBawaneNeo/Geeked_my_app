@@ -1,46 +1,42 @@
 package com.greeakapp.entity;
 
-import java.time.LocalDate;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "pro_membership")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class ProMembership {
+@NoArgsConstructor
+@Table(name = "purchase_item")
+public class PurchaseItem {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "proMembership_id")
+	@Column(name = "purchase_item_id")
 	private Long id;
 
-	@Column(name = "start_date")
-	private LocalDate startDate;
+	@ManyToOne
+	@JoinColumn(name = "programme_id") //, referencedColumnName = "id")
+	private Programme programme;
 
-	@Column(name = "end_date")
-	private LocalDate endDate;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "purchase_id") //, referencedColumnName = "id")
+	private Purchase purchase;
+
+	@Column(name = "quantity")
+	private int quantity;
 
 	@Column(name = "price")
 	private double price;
-
-	@OneToOne
-	@JoinColumn(name = "student_id")
-	private Student student;
-
-	public ProgrammeCategory getProgrammeCategory() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

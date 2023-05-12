@@ -23,15 +23,22 @@ import lombok.Setter;
 public class Coupon {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name ="coupon_id")
+	@Column(name = "coupon_id")
 	private Long id;
+
 	@NotBlank(message = "Name is mandatory")
-	@Column(name ="coupon_name")
+	@Column(name = "coupon_name")
 	private String name;
-	@NotBlank(message = " Code is mendatory")
-	@Column(name ="coupon_code")
+
+	@NotBlank(message = "Code is mandatory")
+	@Column(name = "coupon_code")
 	private String code;
-	@NotNull(message = "Discount must be positive number")
+
+	@NotNull(message = "Discount must be a positive number")
 	private Double discount;
+
+	@NotNull(message = "Coupon type must add")
+	@Column(name = "coupon_type")
+	private CouponType type;
 
 }

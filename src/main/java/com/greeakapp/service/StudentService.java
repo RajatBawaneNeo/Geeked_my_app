@@ -2,6 +2,8 @@ package com.greeakapp.service;
 
 import java.util.List;
 
+import com.greeakapp.entity.CartItem;
+import com.greeakapp.entity.Purchase;
 import com.greeakapp.entity.Student;
 
 public interface StudentService {
@@ -15,5 +17,7 @@ public interface StudentService {
 	void deleteStudentById(Long studentId);
 
 	Student updateStudent(Long id, Student student);
+
+	Purchase purchaseProgrammes(Long studentId, CartItem[] cartItems, String couponCode, boolean isProMember);
 
 }

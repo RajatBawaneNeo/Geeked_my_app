@@ -1,6 +1,7 @@
 package com.greeakapp.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
@@ -24,13 +25,14 @@ public class Purchase {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "purchase_id")
 	private Long id;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "programee_id")
+	@ManyToOne
+	@JoinColumn(name = "programme_id")
 	private Programme programme;
 
 	@NotNull
@@ -43,5 +45,15 @@ public class Purchase {
 	@NotNull
 	@Column(name = "purchase_Date", updatable = false)
 	private LocalDate purchaseDate;
+	
+	@ManyToOne
+	@JoinColumn(name = "coupon_id")
+	private Coupon coupon;
+
+
+	public List<Student> getPurchaseItems() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

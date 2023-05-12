@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.greeakapp.entity.ProMembership;
 import com.greeakapp.entity.Student;
+import com.greeakapp.exception.ResourceNotFoundException;
 import com.greeakapp.repository.ProMembershipRepo;
 
 @Service
